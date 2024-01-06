@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true">
+
+
+  <div
+    style="background-image: url(../../assets/login\ page.png);height: 100vh;background-size: 100% 100%;justify-content: center;align-items: center;display: flex; flex-direction: column; overflow: scroll; position: relative;">
+    <div style="    margin-top: 230px;margin-left:10%;">
+
+      <input class="aa" placeholder="User Name" style="
+   
+        border: 1.5px solid rgb(117, 117, 117,0.4);  
+        background: rgba(255,255,255,0.3);
+        border-radius: 35px;
+        width: 86%;
+        line-height: 10px;
+       padding: 12px;
+        margin-bottom: 10px;
+        
+      " type="Text" [(ngModel)]="userId" />
+
+      <!-- <input class="aa" placeholder="Password" style="
+   
+   border: 1.5px solid rgb(117, 117, 117,0.4);  
+        background: rgba(255,255,255,0.3);
+        border-radius: 13px;
+        width: 86%;
+        line-height: 10px;
+        margin-bottom: 20px;
+      " type="password" [(ngModel)]="password" /><br> -->
+
+
+      <input class="aa" placeholder="Password"
+        style="border: 1.5px solid rgb(117, 117, 117,0.4); background: rgba(255,255,255,0.3); border-radius: 35px; width: 86%; line-height: 10px; margin-bottom: 20px; padding: 12px;position: relative;"
+        type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" name="password" id="passwordInput" />
+
+
+      <ion-icon [name]="showPassword ? 'eye' : 'eye-off'" color="dark" (click)="togglePasswordVisibility()" style="position: absolute;margin-left: -33px;
+        margin-top: 15px;font-size: 20px;"></ion-icon>
+
+
+      <button (click)="login()" style="    background:#ee1c25;width: 70%;line-height: 10px; padding: 10px; ; border-radius: 35px;color: white;font-weight: 900;font-size: 16px;letter-spacing: 2px;font-family: monospace;
+        margin-left: 8%;">LOGIN</button>
+
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+
+</ion-content>

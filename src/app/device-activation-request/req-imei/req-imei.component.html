@@ -1,0 +1,46 @@
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <ion-row><ion-col style="text-align: end"><span style="font-size: 28px; color: red"><ion-icon name="close-outline"
+          (click)="close()"></ion-icon></span></ion-col></ion-row>
+  <ion-searchbar [(ngModel)]="filterBy"></ion-searchbar>
+  <ion-row><ion-col style="text-align: end;padding-right: 20px;">
+      <span style="font-weight: bold"> Requested IMEI : </span> <span style="color: #004c8f">{{ calist.length
+        }}</span>
+    </ion-col></ion-row>
+
+
+  <ion-row>
+    <ion-col>
+      <ion-card style="border-left: 4px solid #004c8f" *ngFor="let a of calist | activationFilter : filterBy">
+        <ion-card-content style="padding: 2px">
+          <ion-row><ion-col style="font-size: 11px"><span style="font-weight: bold"> IMEI : </span>
+              <span style="color: #004c8f">{{ a.imei }}</span></ion-col></ion-row>
+          <ion-row>
+            <ion-col style="font-size: 10px">
+              <span style="font-weight: bold"> Card Active Date : </span><span style="color: #004c8f">{{
+                a.cardactivationdate
+                }}</span></ion-col>
+            <ion-col style="font-size: 10px">
+              <span style="font-weight: bold"> Card End Date : </span>
+              <span style="color: #004c8f">{{ a.cardenddate }}</span></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="font-size: 10px">
+              <span style="font-weight: bold"> Card Status : </span>
+              <span style="color: #004c8f"> {{ a.cardstatus }}</span></ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col></ion-row>
+
+  <ion-fab *ngIf="arrow" style="margin-right: 1%; margin-bottom: 18%" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button class="fabbutton" size="small" (click)="scrollToTop()">
+      <ion-icon class="icon" name="arrow-up"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab *ngIf="arrow" style="margin-right: 1%; margin-bottom: 5%" slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button class="fabbutton" size="small" (click)="scrollToBottom()">
+      <ion-icon class="icon" name="arrow-down"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

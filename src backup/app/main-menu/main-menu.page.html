@@ -1,0 +1,61 @@
+<ion-content [fullscreen]="true">
+  <div style="background-image: url('../../assets/background.png');
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+  
+">
+    <div style="display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;">
+      <ion-row>
+        <ion-col>
+          <ion-row><ion-col>
+              <ion-button style=" color: white;border-radius: 15px;" fill="clear" (click)="activation()"><img
+                  src="../../assets/1.png" alt="Device Activation"></ion-button>
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row><ion-col>
+              <ion-button style=" color: white;border-radius: 15px;" fill="clear" (click)="bulk()"><img
+                  src="../../assets/7.png" alt="Bulk Activation"></ion-button>
+            </ion-col></ion-row>
+
+
+          <ion-row><ion-col>
+              <ion-button style=" color: white;border-radius: 15px;" fill="clear" (click)="renewal()"><img
+                  src="../../assets/2.png" alt="Device Renewal">
+              </ion-button>
+            </ion-col></ion-row>
+          <ion-row><ion-col>
+              <ion-button style=" color: white;border-radius: 15px;" fill="clear" (click)="topup()"><img
+                  src="../../assets/3.png" alt="Device Topup">
+              </ion-button>
+            </ion-col></ion-row>
+          <ion-row><ion-col>
+              <ion-button style=" color: white;border-radius: 15px;" fill="clear" (click)="extoneyear()"><img
+                  src="../../assets/4.png" alt="Device
+                Extend 1yr "></ion-button>
+            </ion-col></ion-row>
+
+          <ion-row><ion-col>
+              <ion-button style=" color: white;border-radius: 15px;" fill="clear" (click)="imeideatil()"><img
+                  src="../../assets/5.png" alt="Device Details">
+              </ion-button>
+            </ion-col></ion-row>
+
+          <ion-row><ion-col>
+              <ion-button style="color: white;border-radius: 15px;" fill="clear" (click)="confirmlogout()">
+                <img src="../../assets/6.png" alt="Logout"></ion-button>
+            </ion-col></ion-row>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,227 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon routerLink="/main-menu" name="arrow-back" style="padding: 10px" slot="start"></ion-icon>
+    </ion-buttons>
+    <ion-title>IMEI Details </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col style="text-align: center !important">
+      <ion-button color="danger" style="width: 98%" (click)="qrscan()">
+        <ion-icon slot="start" name="qr-code"></ion-icon>
+        SCAN QR-CODE
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+
+
+  <ion-row class="form-field">
+    <ion-col>
+      <form [formGroup]="imeidetailsForm">
+        <ion-row style="text-align: center">
+          <ion-col size="12" size-sm="6" size-md="6" size-lg="6">
+            <ion-item>
+              <ion-label position="floating">
+                IMEI Number :</ion-label>
+              <ion-input type="number" formControlName="imeino"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" size-sm="4" size-lg="4" size-md="4">
+            <ion-button (click)="submit()" style=" --background: #004c8f;"
+              [disabled]="!imeidetailsForm.valid">Submit</ion-button>
+            <ion-button (click)="clear()" type="reset" style=" --background: #004c8f;">Clear</ion-button>
+          </ion-col></ion-row>
+
+        <div *ngIf="myPlatform != 'desktop'&&show" class="form-fields">
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>IMEI No </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.imeiNo}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>ICCID 1</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.iccidNo1}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>ICCID 2 </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.iccidNo2}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Sim 1</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.simNo1}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Sim 2 </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.simNo2}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>IMSI 1</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.imsiNo1}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>IMSI 2</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.imsiNo2}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Provider 1 </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.provider1}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Provider 2</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.provider2}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Vltd No </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.vltdsNo}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Box No</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.serialNo}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Slot No</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.slotNo}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Plate No </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.plateNo}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Dealer Name</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.providerName}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Make </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.manufacturer}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Model </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.model}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Card Activation Date</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.activationDate}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Card End Date</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.cardEndDate}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Card Status </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.cardStatus}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Created Date </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.createdDate}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Company Name </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.companyName}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Driver Name </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.driverName}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Driver Contact No</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.driverNumber}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Current Speed</ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.speed}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Today Odometer </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.todayOdometer}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Status </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.status}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" style="align-self: center">
+              <ion-label>Raw Data Date & Time </ion-label>
+            </ion-col>
+            <ion-col size="7">: {{imeidetails.eventTime}} </ion-col>
+          </ion-row>
+        </div>
+      </form>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="padding: 10px;display: none;" *ngIf="show">
+    <ion-row>
+      <ion-col>
+        <h6>Device Status History :</h6>
+      </ion-col>
+    </ion-row>
+
+    <ion-col size="12">
+      <jqxGrid #myGrid [theme]="'material'" [enablebrowserselection]="true" [pagesizeoptions]="page" [width]="'99.5%'"
+        [autoheight]="true" [source]="dataAdapter" [columns]="columns" [filterable]="true" [sortable]="true"
+        [columnsresize]="true" [enabletooltips]="true" [pageable]="true" [showfilterrow]="true" style="
+          font-size: 16px;
+          text-align: center !important;
+          margin: auto;
+          cursor: pointer;
+        " [columns]="columns">
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+</ion-content>

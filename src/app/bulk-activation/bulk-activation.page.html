@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon routerLink="/main-menu" name="arrow-back" style="padding: 10px" slot="start"></ion-icon>
+    </ion-buttons>
+    <ion-title>Bulk Activation </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-row class="form-field">
+    <ion-col>
+      <form [formGroup]="bulkactivate">
+        <ion-row style="text-align: center">
+          <ion-col size="12" size-sm="6" size-md="6" size-lg="6">
+            <ion-item>
+              <ion-label position="floating">
+                Slot No :</ion-label>
+              <ion-input type="text" formControlName="slotno"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">
+                Box No :</ion-label>
+              <ion-input type="text" formControlName="boxno"></ion-input>
+            </ion-item>
+
+            <ion-row>
+              <ion-col style="text-align: end;" size="12" size-sm="4" size-lg="4" size-md="4">
+                <ion-button (click)="add()" style=" --background: #004c8f;" [disabled]="isAddButtonDisabled()"
+                  size="small">Add</ion-button>
+                <ion-button (click)="clear()" style=" --background: #004c8f;" size="small">Clear</ion-button>
+
+              </ion-col>
+            </ion-row>
+
+            <ion-item>
+              <ion-label class="col-content">Select The Plan:</ion-label>
+              <ion-select aria-label="Fruit" interface="popover" placeholder="Select The Plan"
+                formControlName="validityperiod">
+                <ion-select-option value="1 Year">1 Year</ion-select-option>
+                <ion-select-option value="2 Year">2 Year</ion-select-option>
+                <ion-select-option value="3 Year">3 Year</ion-select-option>
+                <ion-select-option value="4 Year">4 Year</ion-select-option>
+                <ion-select-option value="5 Year">5 Year</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </form>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="isshow && tableData.length > 0" class="content-style">
+    <ion-col size="6" style="text-align: start;margin-top: -9px;padding-left: 25px; ">
+      <p>Total Qty: {{ tableData.length }}</p>
+    </ion-col>
+    <ion-col size="6" style="text-align: end !important; padding-right:15px">
+      <ion-button class="button" (click)="deleteMode()" size="small" style=" --background: #004c8f;">Delete</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="content-style">
+    <ion-col>
+      <jqxGrid #myGrid *ngIf="isshow && tableData.length > 0" (onRowclick)="myGridOnRowSelect($event)"
+        [selectionmode]="'singlerow'" [width]="'99%'" [source]="dataAdapter" [columns]="columns" [height]="'300'"
+        [sortable]="true" [filterable]="true" [enablebrowserselection]="true" [enabletooltips]="true" [pageable]="true"
+        [showfilterrow]="true" style="
+      font-size: 10px;
+      text-align: center !important;
+      margin: auto;
+      cursor: pointer;
+    ">
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isshow"> <ion-col size="12" size-sm="4" size-lg="4" size-md="4" style="text-align: center;">
+      <ion-button (click)="submit()" size="small" style=" --background: #004c8f;"
+        [disabled]="isSubmitDisabled()">Submit</ion-button>
+      <ion-button (click)="clear1()" size="small" type="reset" style=" --background: #004c8f;">Clear</ion-button>
+    </ion-col>
+
+  </ion-row>
+
+
+</ion-content>

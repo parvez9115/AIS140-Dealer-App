@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon routerLink="/main-menu" name="arrow-back" style="padding: 10px" slot="start"></ion-icon>
+    </ion-buttons>
+    <ion-title>Device Topup Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col style="text-align: center !important">
+      <ion-button color="danger" style="font-size: 11px;width: 45%;" (click)="qrscan()">
+        <ion-icon slot="start" name="qr-code"></ion-icon>
+        SCAN QR-CODE
+      </ion-button>
+      <ion-button style="--background: #004c8f; font-size: 11px;width: 45%;" (click)="reqimei()">
+        Requested IMEI
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="imeidetail">
+    <ion-row>
+      <ion-col size="10">
+        <ion-item>
+          <ion-label position="floating">IMEI :</ion-label>
+          <ion-input type="Number" placeholder="Enter The IMEI Number" formControlName="imei"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="1" style="margin-top: 8px">
+        <ion-button (click)="addimei()" style="--background: #004c8f">+</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label class="col-content">Select The Plan:</ion-label>
+          <ion-select aria-label="Fruit" interface="popover" placeholder="Select The Plan"
+            formControlName="validityperiod">
+            <ion-select-option value="1 Month">1 Month</ion-select-option>
+            <ion-select-option value="2 Month">2 Month</ion-select-option>
+            <ion-select-option value="3 Month">3 Month</ion-select-option>
+            <ion-select-option value="4 Month">4 Month</ion-select-option>
+            <ion-select-option value="5 Month">5 Month</ion-select-option>
+            <ion-select-option value="6 Month">6 Month</ion-select-option>
+            <ion-select-option value="7 Month">7 Month</ion-select-option>
+            <ion-select-option value="8 Month">8 Month</ion-select-option>
+            <ion-select-option value="9 Month">9 Month</ion-select-option>
+            <ion-select-option value="10 Month">10 Month</ion-select-option>
+            <ion-select-option value="11 Month">11 Month</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </form>
+  <ion-row class="content-style" *ngIf="isshow && tableData.length > 0">
+    <ion-col size="6" style="text-align: start; margin-top: -9px; padding-left: 19px">
+      <p>Total Qty: {{ tableData.length }}</p>
+    </ion-col>
+    <ion-col size="6" style="text-align: end !important; padding-right: 15px">
+      <ion-button class="button" (click)="deleteMode()" size="small" style="--background: #004c8f">Delete</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="isshow && tableData.length > 0" class="content-style">
+    <ion-col>
+      <jqxGrid #myGrid (onRowclick)="myGridOnRowSelect($event)" [selectionmode]="'singlerow'" [width]="'99%'"
+        [source]="dataAdapter" [columns]="columns" [height]="'300'" [sortable]="true" [filterable]="true"
+        [enablebrowserselection]="true" [enabletooltips]="true" [pageable]="true" [showfilterrow]="true" style="
+          font-size: 10px;
+          text-align: center !important;
+          margin: auto;
+          cursor: pointer;
+        ">
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col style="text-align: center">
+      <ion-button size="small" (click)="submit()" [disabled]="isSubmitDisabled()"
+        style="--background: #004c8f">Submit</ion-button>
+      <ion-button size="small" (click)="clear()" style="--background: #004c8f">Clear</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
